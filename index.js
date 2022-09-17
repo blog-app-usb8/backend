@@ -1,11 +1,11 @@
-const express = require('express')
-const app = express()
-const port = 3001
+const http = require('http')
+const app = require('./app')
+const logger = require('./utils/logger')
+const config = require('./utils/config')
 
-app.get('/', (_req, res) => {
-  res.send('Hello World!')
-})
+const server = http.createServer(app)
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+const PORT = config.PORT || 3001
+server.listen(PORT, () => {
+  logger.info(`Server running on port ${PORT}`)
 })
