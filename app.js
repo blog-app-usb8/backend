@@ -25,7 +25,9 @@ app.use(express.static('build'))
 app.use(express.json())
 app.use(middleware.requestLogger)
 
+const usersRouter = require('./routes/users')
 const blogsRouter = require('./routes/blogs')
+app.use('/api/users', usersRouter)
 app.use('/api/blogs', blogsRouter)
 
 app.use(middleware.unknownEndpoint)
