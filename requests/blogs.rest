@@ -1,0 +1,98 @@
+# VS Code REST client
+
+###
+GET http://localhost:3001/api/blogs
+###
+GET http://localhost:3001/api/blogs/62fa410ce6ca1db6da6cc0a2
+###
+GET http://localhost:3001/api/blogs/62fa410ce6ca1db6da6cc0a
+
+### --------------------------------
+POST http://localhost:3001/api/blogs
+Content-Type: application/json
+
+{
+  "title": "the call of the wild",
+  "author": "Jack London",
+  "url": "hihihaha.com",
+  "likes": 8
+}
+
+###
+POST http://localhost:3001/api/blogs
+Content-Type: application/json
+
+{
+  "title": "",
+  "author": "Jack London",
+  "url": "hihihaha.com",
+  "likes": 8
+}
+
+### -------------------------------- POST: body with userId
+POST http://localhost:3001/api/blogs
+Content-Type: application/json
+
+{
+  "title": "the call of the wild",
+  "author": "Jack London",
+  "url": "hihihaha.com",
+  "likes": 8,
+  "userId": "62a4c7abc8e6ad6f4fc0ce69"
+}
+
+
+### --------------------------------
+PUT http://localhost:3001/api/blogs/62fa410ce6ca1db6da6cc0a2
+Content-Type: application/json
+
+{
+  "title": "Winter in Finland",
+  "author": "Hieu",
+  "url": "www.hihihaha.com",
+  "likes": 4
+}
+###
+PUT http://localhost:3001/api/blogs/62fa410ce6ca1db6da6cc0a2
+Content-Type: application/json
+
+{
+  "title": "",
+  "author": "Hieu",
+  "url": "www.hihihaha.com",
+  "likes": 4
+}
+
+### --------------------------------
+DELETE http://localhost:3001/api/blogs/62a5e24a24d2addf4a9180cd
+
+###
+DELETE http://localhost:3001/api/blogs/62a48487fcfeca016e7d2006huhu
+
+### -------------------------------- POST COMMENT
+POST http://localhost:3001/api/blogs/62f6f21bc938a4d324587faf/comments
+Content-Type: application/json
+
+{
+  "content": "test",
+  "blogId": "62f6f21bc938a4d324587faf"
+}
+
+####################################
+####################################
+####################################
+POST http://localhost:3001/api/blogs
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIxIiwiaWQiOiI2MmE1ZTBhZWM3ZDk2MjU1NTI2ZGY0ZWUiLCJpYXQiOjE2NTUwNDI1MTksImV4cCI6MTY1NTA0NjExOX0.rU9g5Z446P1Rmtx_9I3Zs2e97w2HIB6UV7FVYSAVo1s
+
+{
+  "title": "the call of the wild",
+  "author": "Jack London",
+  "url": "hihihaha.com",
+  "likes": 8
+}
+
+###
+DELETE http://localhost:3001/api/blogs/62a5f31e2dd0e4010410ca3a
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIxIiwiaWQiOiI2MmE1ZTBhZWM3ZDk2MjU1NTI2ZGY0ZWUiLCJpYXQiOjE2NTUwNDI1MTksImV4cCI6MTY1NTA0NjExOX0.rU9g5Z446P1Rmtx_9I3Zs2e97w2HIB6UV7FVYSAVo1s
+# Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIyIiwiaWQiOiI2MmE1ZTA2Y2M3ZDk2MjU1NTI2ZGY0ZWIiLCJpYXQiOjE2NTUwNDI1MzQsImV4cCI6MTY1NTA0NjEzNH0.k1G68fA-ojHBOkFYleQWsCee5RLS9w3z_eje8iO3w-U
