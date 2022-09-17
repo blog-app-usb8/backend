@@ -66,4 +66,24 @@ blogsRouter.post('/', middleware.userExtractor, async (req, res, next) => {
   }
 })
 
+blogsRouter.delete('/:id', middleware.userExtractor, async (req, res, next) => {
+  const user = req.user
+  try {
+    const blog = await Blog.findById(req.params.id)
+    if (!blog) {
+      return res.status(404).end()
+    }
+
+    if ( blog.user.toString() === user.id.toString() ) {
+      await Blog.findByIdAndRemove(req.params.id)
+      res.status(204).end()
+    } else {
+      res.status(401).end('Users can only delete their OWN blogs')
+    }
+  }
+  catch (error) {
+    next(error)
+  }
+})
+
 module.exports = blogsRouter
