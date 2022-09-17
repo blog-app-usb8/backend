@@ -1,6 +1,7 @@
 const logger = require('./logger')
 const jwt = require('jsonwebtoken')
 // const User = require('../models/user')
+const { User } = require('../mongo')
 
 const requestLogger = (req, res, next) => {
   logger.info('Method:', req.method)
@@ -16,6 +17,7 @@ const unknownEndpoint = (req, res) => {
 
 const errorHandler = (error, req, res, next) => {
   logger.error(error.message)
+  // console.log('----------------------', error.name)
   
   switch (error.name) {
     case 'CastError':
@@ -31,10 +33,36 @@ const errorHandler = (error, req, res, next) => {
   next(error)
 }
 
+// const tokenExtractor = (req, res, next) => {
+//   const authorization = req.get('authorization')
+//   if (authorization && authorization.toLowerCase().startsWith('bearer ')) {
+//     req.token = authorization.substring(7)
+//   } else {
+//     return res.status(401).json({ error: 'token missing' })
+//   }
+//   next()
+// }
+
+const userExtractor = async (req, res, next) => {
+  const authorization = req.get('authorization')
+  if (authorization && authorization.toLowerCase().startsWith('bearer ')) {
+    try { // NOTE: invalid token right here --> middleware userExtractor cause err before ... before errorHandler middleware
+      const decodedToken = jwt.verify(authorization.substring(7), process.env.SECRET)
+      req.user = await User.findById(decodedToken.id)
+      next()
+    } catch(err) {
+      next(err)
+    }
+  }
+  else {
+    return res.status(401).json({ error: 'token missing' })
+  }
+}
+
 module.exports = {
   requestLogger,
   // tokenExtractor,
-  // userExtractor,
+  userExtractor,
   unknownEndpoint,
   errorHandler,
 }

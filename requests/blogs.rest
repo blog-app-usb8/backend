@@ -83,7 +83,19 @@ Content-Type: application/json
 ####################################
 POST http://localhost:3001/api/blogs
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIxIiwiaWQiOiI2MmE1ZTBhZWM3ZDk2MjU1NTI2ZGY0ZWUiLCJpYXQiOjE2NTUwNDI1MTksImV4cCI6MTY1NTA0NjExOX0.rU9g5Z446P1Rmtx_9I3Zs2e97w2HIB6UV7FVYSAVo1s
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIxIiwiaWQiOiI2MmE2ZTRmNzVhYzJiZDMxMWYwZjI5ZDgiLCJpYXQiOjE2NjM0Mzg3NTIsImV4cCI6MTY2MzQ0MjM1Mn0.vyoUsyvQxExGR58S_4qzNIA5pYu39yDpi2M5wfmKel8
+
+{
+  "title": "the call of the wild",
+  "author": "Jack London",
+  "url": "hihihaha.com",
+  "likes": 8
+}
+
+### Invalid token
+POST http://localhost:3001/api/blogs
+Content-Type: application/json
+Authorization: bearer eeJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIxIiwiaWQiOiI2MmE1ZTBhZWM3ZDk2MjU1NTI2ZGY0ZWUiLCJpYXQiOjE2NTUwNDI1MTksImV4cCI6MTY1NTA0NjExOX0.rU9g5Z446P1Rmtx_9I3Zs2e97w2HIB6UV7FVYSAVo1s
 
 {
   "title": "the call of the wild",
