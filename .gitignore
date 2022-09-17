@@ -1,0 +1,19 @@
+*.git/
+*node_modules/
+*build/
+*.env*
+
+forme/
+note*.md
+
+# *.eslint*.js
+# *.eslintignore
+# *.prettierrc
+
+# *db/
+
+# *.dockerignore
+# *Dockerfile
+# *dev.Dockerfile
+# *docker-compose.yml
+# *docker-compose.dev.yml
