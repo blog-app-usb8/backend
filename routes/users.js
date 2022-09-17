@@ -3,25 +3,25 @@ const usersRouter = require('express').Router()
 // const User = require('../models/user')
 const { User } = require('../mongo')
 
-usersRouter.get('/', async (request, response) => {
+usersRouter.get('/', async (req, res) => {
   const users = await User.find({}).populate('blogs',
     { url: 1, title: 1, author: 1, id: 1 }
   )
-  response.json(users)
+  res.json(users)
 })
 
-usersRouter.post('/', async (request, response, next) => {
-  const { username, name, password } = request.body
+usersRouter.post('/', async (req, res, next) => {
+  const { username, name, password } = req.body
 
   const existingUser = await User.findOne({ username })
   if (existingUser) {
-    return response.status(400).json({
+    return res.status(400).json({
       error: 'username must be unique'
     })
   }
 
   if (!password || password.length < 3) {
-    return response.status(400).json({
+    return res.status(400).json({
       error: 'password must be not empty & longer than the minimum allowed length (3).'
     })
   }
@@ -37,7 +37,7 @@ usersRouter.post('/', async (request, response, next) => {
 
   try {
     const savedUser = await user.save()
-    response.status(201).json(savedUser)
+    res.status(201).json(savedUser)
   } catch (err) {
     next(err)
   }
