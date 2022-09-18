@@ -18,7 +18,8 @@ const unknownEndpoint = (req, res) => {
 const errorHandler = (error, req, res, next) => {
   logger.error(error.message)
   // console.log('----------------------', error.name)
-  
+
+  /* eslint-disable */
   switch (error.name) {
     case 'CastError':
       return res.status(400).send({ error: 'malformatted id' })
@@ -29,6 +30,7 @@ const errorHandler = (error, req, res, next) => {
     case 'TokenExpiredError':
       return res.status(401).json({ error: 'token expired' })
   }
+  /* eslint-enable */
 
   next(error)
 }

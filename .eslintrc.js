@@ -27,7 +27,7 @@ module.exports = {
     ],
     'semi': [
       'error',
-      'never'  //  NOTE: semicolon - option ALWAYS 
+      'never' // NOTE: semicolon - option ALWAYS 
     ],
     'eqeqeq': 'error',
     'no-trailing-spaces': 'error', // NOTE:

@@ -42,8 +42,6 @@ blogsRouter.put('/:id', (req, res, next) => {
 })
 
 blogsRouter.post('/', middleware.userExtractor, async (req, res, next) => {
-  const body = req.body
-  
   const user = req.user
 
   try {
