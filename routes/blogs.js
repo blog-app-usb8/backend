@@ -27,6 +27,7 @@ blogsRouter.get('/:id', async (req, res, next) => {
 
 blogsRouter.put('/:id', (req, res, next) => {
   const editedBlog = req.body
+  delete editedBlog.user
 
   Blog
     .findByIdAndUpdate(
