@@ -69,18 +69,10 @@ DELETE http://localhost:3001/api/blogs/62a5e24a24d2addf4a9180cd
 ###
 DELETE http://localhost:3001/api/blogs/62a48487fcfeca016e7d2006huhu
 
-### -------------------------------- POST COMMENT
-POST http://localhost:3001/api/blogs/62f6f21bc938a4d324587faf/comments
-Content-Type: application/json
+####################################
+####################################
+####################################
 
-{
-  "content": "test",
-  "blogId": "62f6f21bc938a4d324587faf"
-}
-
-####################################
-####################################
-####################################
 POST http://localhost:3001/api/blogs
 Content-Type: application/json
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIxIiwiaWQiOiI2MmE2ZTRmNzVhYzJiZDMxMWYwZjI5ZDgiLCJpYXQiOjE2NjM0Mzg3NTIsImV4cCI6MTY2MzQ0MjM1Mn0.vyoUsyvQxExGR58S_4qzNIA5pYu39yDpi2M5wfmKel8

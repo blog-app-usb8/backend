@@ -1,6 +1,6 @@
 const blogsRouter = require('express').Router()
 // const Blog = require('../models/blog')
-const { Blog } = require('../mongo')
+const { Blog, Comment } = require('../mongo')
 const middleware = require('../utils/middleware')
 
 blogsRouter.get('/', async (_req, res) => {
@@ -79,6 +79,32 @@ blogsRouter.delete('/:id', middleware.userExtractor, async (req, res, next) => {
     }
   }
   catch (error) {
+    next(error)
+  }
+})
+
+blogsRouter.get('/:id/comments', async (req, res) => {
+  // console.log('-------------',req.params)
+  const comments = await Comment.find({ blogId: req.params.id })
+  if (comments) {
+    res.json(comments)
+  } else {
+    res.status(404).end()
+  }
+})
+
+blogsRouter.post('/:id/comments', async (req, res, next) => {
+  const body = req.body
+
+  try {
+    const comment = new Comment({
+      content: body.content,
+      blogId: body.blogId,
+    })
+
+    const savedComment = await comment.save()
+    res.status(201).json(savedComment)
+  } catch(error) {
     next(error)
   }
 })

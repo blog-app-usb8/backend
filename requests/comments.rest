@@ -1,0 +1,10 @@
+GET http://localhost:3001/api/blogs/62fa410ce6ca1db6da6cc0a2/comments
+
+###
+POST http://localhost:3001/api/blogs/62fa410ce6ca1db6da6cc0a2/comments
+Content-Type: application/json
+
+{
+  "content": "agatha",
+  "blogId": "62fa410ce6ca1db6da6cc0a2"
+}
