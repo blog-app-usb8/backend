@@ -7,9 +7,9 @@ const logger = require('./utils/logger')
 const middleware = require('./utils/middleware')
 const mongoose = require('mongoose')
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+// app.get('/', (req, res) => {
+//   res.send('Hello World!')
+// })
 
 logger.info('------ connecting to', config.MONGODB_URI)
 mongoose.connect(config.MONGODB_URI)
