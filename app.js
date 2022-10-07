@@ -25,6 +25,10 @@ app.use(express.static('build'))
 app.use(express.json())
 app.use(middleware.requestLogger)
 
+app.get('/api/ping', (_req, res) => {
+  res.send('pong')
+})
+
 const usersRouter = require('./routes/users')
 const loginRouter = require('./routes/login')
 const blogsRouter = require('./routes/blogs')
