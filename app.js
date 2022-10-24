@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const path = require('path')
 const cors = require('cors')
 
 const config = require('./utils/config')
@@ -25,6 +26,10 @@ app.use(express.static('build'))
 app.use(express.json())
 app.use(middleware.requestLogger)
 
+app.get('/api/ping', (_req, res) => {
+  res.send('pong')
+})
+
 const usersRouter = require('./routes/users')
 const loginRouter = require('./routes/login')
 const blogsRouter = require('./routes/blogs')
@@ -32,7 +37,10 @@ app.use('/api/users', usersRouter)
 app.use('/api/login', loginRouter)
 app.use('/api/blogs', blogsRouter)
 
-app.use(middleware.unknownEndpoint)
+app.get('*', function (_req, res) {
+  res.sendFile(path.resolve('build', 'index.html'))
+})
+// app.use(middleware.unknownEndpoint)
 app.use(middleware.errorHandler)
 
 module.exports = app
